@@ -18,7 +18,7 @@ typedef struct _NODE{
         struct _NODE *pPre;
         struct _NODE *pNext;
         void         *Instance;
-        UINT8        Id;
+        UINT8        *IdName;
 }NODE,*pNODE;
 
 pNODE CreatLinkList(void);
@@ -26,7 +26,7 @@ LSTATUS IsEmptyLinkList(IN pNODE pHead);
 
 
 UINT8   GetLengthLinkList(IN pNODE pHead);
-LSTATUS InsertNodeLinkList(IN pNODE pHead,IN UINT16 pos,IN void * Instance);
+LSTATUS InsertNodeLinkList(IN pNODE pHead,IN UINT16 pos,IN void * Instance,IN UINT8 *idname);
 LSTATUS DelNodeLinkList(IN pNODE pHead,IN UINT16 pos);
 LSTATUS FreeMemory(IN pNODE pHead);
 

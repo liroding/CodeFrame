@@ -55,10 +55,11 @@ ECHO:
 
 $(CUR_OBJS):%.o:%.c
 	$(CC) -c $^ -g -o $(ROOT_DIR)/$(OBJS_DIR)/$@ $(CFLAGS)
-	cp $(ROOT_DIR)/$(BIN_DIR)/myapp ./
 clean:
 	rm $(OBJS_DIR)/*.o
 	$(RM) $(BIN_DIR)/*
 
 hello:
 	echo $(SUBDIRS) $(ROOT_DIR) $(CUR_SOURCE) $(CUR_OBJS) $(CFLAGS)
+cp:
+	cp $(Root_DIR)/$(BIN_DIR)/myapp ./

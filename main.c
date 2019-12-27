@@ -17,6 +17,9 @@ void main()
      Listhead = CreatLinkList();
      UINT8 Len = GetLengthLinkList(Listhead);
      printf("list len = 0x%x \n",Len);
-     InsertNodeLinkList(Listhead,1,&cosimintance);
+     InsertNodeLinkList(Listhead,1,&cosimintance,"cosim");
+     InsertNodeLinkList(Listhead,2,&cosimintance,"cosim_2");
+//     printf("0x%lx\n",((COSIM_INSTANCE *)(Listhead->pNext->pNext->Instance))->Test);
+     DisplayLinkList(Listhead);
      // */
 }
