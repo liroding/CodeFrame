@@ -28,7 +28,7 @@ LSTATUS IsEmptyLinkList(IN pNODE pHead);
 UINT8   GetLengthLinkList(IN pNODE pHead);
 LSTATUS InsertNodeLinkList(IN pNODE pHead,IN UINT16 pos,IN void * Instance,IN UINT8 *idname);
 LSTATUS DelNodeLinkList(IN pNODE pHead,IN UINT16 pos);
-LSTATUS FreeMemory(IN pNODE pHead);
+LSTATUS FreeMemory(IN pNODE *ppHead);
 
 
 #endif

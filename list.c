@@ -57,7 +57,7 @@ UINT8 GetLengthLinkList(pNODE pHead)
 LSTATUS InsertNodeLinkList(pNODE pHead,UINT16 pos,void *Instance,UINT8 *idname)
 {
     pNODE pt = NULL, p_new = NULL;
-    if( (pos>0)&& (pos< GetLengthLinkList(pHead))+1)
+    if( (pos>=0)&& (pos< GetLengthLinkList(pHead))+1)
     {
         p_new = (pNODE)malloc(sizeof(NODE));
         printf("p_new addr = 0x%x 0x%x\n",p_new,NULL);
@@ -76,7 +76,6 @@ LSTATUS InsertNodeLinkList(pNODE pHead,UINT16 pos,void *Instance,UINT8 *idname)
         }
        
         printf("p_new addr = 0x%x 0x%x\n",p_new,NULL);
-//pt = pHead -> pNext ;  //point the insert tail  
         pt = pHead -> pNext ;  //point the insert tail  
         p_new -> Instance = Instance;
         p_new -> pNext = pt ;
@@ -92,8 +91,41 @@ LSTATUS InsertNodeLinkList(pNODE pHead,UINT16 pos,void *Instance,UINT8 *idname)
         return -1;
     }
 }
-LSTATUS DelNodeLinkList(pNODE pHead,UINT16 pos);
-LSTATUS FreeMemory(pNODE pHead);
+LSTATUS DelNodeLinkList(pNODE pHead,UINT16 pos)
+{
+    pNODE pt = NULL ;
+    if( (pos>=0)&& (pos< GetLengthLinkList(pHead))+1)
+    {
+
+        while(1)
+        {
+                if(pos == 0)
+                        break;
+                pHead = pHead ->pNext;
+                pos--;
+        }
+        pt = pHead ->pNext ->pNext;
+        free(pHead ->pNext);
+        pHead ->pNext = pt;
+        if(pt != NULL)
+                pt->pPre = pHead;
+        return 1;
+    }
+    return -1;
+}
+LSTATUS FreeMemory(IN pNODE *ppHead)
+{
+    pNODE pt = NULL ;
+    while (*ppHead != NULL)
+    {
+            pt = (*ppHead)->pNext;
+            free(*ppHead);
+            if(pt != NULL)
+                    pt->pPre = NULL;
+            *ppHead = pt;
+    }
+}
+
 LSTATUS DisplayLinkList(IN pNODE pHead)
 {
     pNODE pt = pHead ->pNext ;
@@ -102,6 +134,8 @@ LSTATUS DisplayLinkList(IN pNODE pHead)
     while(pt != NULL)
     {
             printf("-- %s --\n",pt->IdName);
+            if(strcmp(pt->IdName,"cosim") == 0)        
+                        printf("Info: Test = 0x%x\n",((COSIM_INSTANCE *)pt->Instance)->Test);
             pt = pt ->pNext;
     }
     return 0;
