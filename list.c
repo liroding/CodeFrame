@@ -1,5 +1,5 @@
 #include "list.h"
-
+#include "rerror.h"
 
 pNODE CreatLinkList(void)
 {
@@ -40,7 +40,7 @@ LSTATUS IsEmptyLinkList(IN pNODE pHead){
             printf("empty");
             return -1;
     }else{
-            return 0;
+            return SUCCESS;
     }
 }
 UINT8 GetLengthLinkList(pNODE pHead)
@@ -86,7 +86,7 @@ LSTATUS InsertNodeLinkList(pNODE pHead,UINT16 pos,void *Instance,UINT8 *idname)
         p_new ->pPre   = pHead ;
         pHead ->pNext  = p_new;
         p_new ->IdName = idname;
-        return 1;
+        return SUCCESS;
     }else{
         return -1;
     }
@@ -109,7 +109,7 @@ LSTATUS DelNodeLinkList(pNODE pHead,UINT16 pos)
         pHead ->pNext = pt;
         if(pt != NULL)
                 pt->pPre = pHead;
-        return 1;
+        return SUCCESS;
     }
     return -1;
 }
@@ -138,5 +138,5 @@ LSTATUS DisplayLinkList(IN pNODE pHead)
                         printf("Info: Test = 0x%x\n",((COSIM_INSTANCE *)pt->Instance)->Test);
             pt = pt ->pNext;
     }
-    return 0;
+    return SUCCESS;
 }

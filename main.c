@@ -3,7 +3,6 @@
 #include "list.h"
 COSIM_INSTANCE cosimintance;
 
-
 void main()
 {
 
@@ -18,10 +17,11 @@ void main()
      UINT8 Len = GetLengthLinkList(Listhead);
      printf("list len = 0x%x \n",Len);
      InsertNodeLinkList(Listhead,0,&cosimintance,"cosim");
-     InsertNodeLinkList(Listhead,1,&test,"test");
      DisplayLinkList(Listhead);
      DelNodeLinkList(Listhead,0);
      DisplayLinkList(Listhead);
      FreeMemory(&Listhead);
      // */
+
+
 }
