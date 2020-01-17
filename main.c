@@ -1,11 +1,14 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include "main.h"
 #include "list.h"
 COSIM_INSTANCE cosimintance;
-
 void main()
 {
 
+    int a = 2;
+    int b = ~1+1;
+    printf("0x%x 0x%x 0x%x\n",a,b,a+b);
     printf("hello world \n");
     /* example
     cosimintance.Test = 0x22;
