@@ -57,7 +57,7 @@ UINT8 GetLengthLinkList(pNODE pHead)
 LSTATUS InsertNodeLinkList(pNODE pHead,UINT16 pos,void *Instance,UINT8 *idname)
 {
     pNODE pt = NULL, p_new = NULL;
-    if( (pos>=0)&& (pos< GetLengthLinkList(pHead))+1)
+    if( (pos>=0)&& ((pos< GetLengthLinkList(pHead))+1))
     {
         p_new = (pNODE)malloc(sizeof(NODE));
         printf("p_new addr = 0x%x 0x%x\n",p_new,NULL);
@@ -94,7 +94,7 @@ LSTATUS InsertNodeLinkList(pNODE pHead,UINT16 pos,void *Instance,UINT8 *idname)
 LSTATUS DelNodeLinkList(pNODE pHead,UINT16 pos)
 {
     pNODE pt = NULL ;
-    if( (pos>=0)&& (pos< GetLengthLinkList(pHead))+1)
+    if( (pos>=0)&& ((pos< GetLengthLinkList(pHead))+1))
     {
 
         while(1)
@@ -133,6 +133,12 @@ LSTATUS DisplayLinkList(IN pNODE pHead)
     printf("-------- %s -------\n",pHead->IdName);
     while(pt != NULL)
     {
+            //printf(" |-- %s --\n",pt->IdName);
+            if(strcmp(pt->IdName,"Tail") == 0)
+	    {
+    		printf("-------- %s -------\n",pt->IdName);
+		break;
+	    }
             printf(" |-- %s --\n",pt->IdName);
             if(strcmp(pt->IdName,"cosim") == 0)        
                         printf("     |--Info: Test = 0x%x\n",((COSIM_INSTANCE *)pt->Instance)->Test);
