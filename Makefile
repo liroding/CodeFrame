@@ -10,7 +10,7 @@ OBJFILE=obj
 
 ifneq ($(OUTFILE), $(wildcard $(OUTFILE)))
 $(shell mkdir -p $(OUTFILE) $(OUTFILE)/$(OUTBIN) $(OUTFILE)/$(OBJFILE))
-$(shell echo 'OBJS=*.o\nODIR=obj\n$$(ROOT_DIR)/$$(BIN_DIR)/$$(BIN):$$(ODIR)/$$(OBJS)\n\t$$(CC) -o -g $$@ $$^ $$(CFLAGS) $$(LDFLAGS)'>$(OUTFILE)/Makefile)
+$(shell echo 'OBJS=*.o\nODIR=obj\n$$(ROOT_DIR)/$$(BIN_DIR)/$$(BIN):$$(ODIR)/$$(OBJS)\n\t$$(CC) -g -o $$@ $$^ $$(CFLAGS) $$(LDFLAGS)'>$(OUTFILE)/Makefile)
 endif
 
 ifneq ($(OUTFILE)/$(OUTBIN), $(wildcard $(OUTFILE)/$(OUTBIN)))
@@ -62,4 +62,5 @@ clean:
 hello:
 	echo $(SUBDIRS) $(ROOT_DIR) $(CUR_SOURCE) $(CUR_OBJS) $(CFLAGS)
 cp:
-	cp $(Root_DIR)/$(BIN_DIR)/myapp ./
+	echo $(ROOT_DIR)
+	cp $(ROOT_DIR)/$(BIN_DIR)/myapp ./

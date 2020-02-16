@@ -11,7 +11,7 @@ void main()
     cosimintance.Test = 0x22;
     printf("addr = 0x%x \n",(UINT32 *)(container_of(&cosimintance.Test,COSIM_INSTANCE,Test)));
    // */
-    /*
+    
      pNODE Listhead = NULL ;
      Listhead = CreatLinkList();
      UINT8 Len = GetLengthLinkList(Listhead);
@@ -21,7 +21,6 @@ void main()
      DelNodeLinkList(Listhead,0);
      DisplayLinkList(Listhead);
      FreeMemory(&Listhead);
-     // */
 
 
 }

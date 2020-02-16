@@ -129,13 +129,13 @@ LSTATUS FreeMemory(IN pNODE *ppHead)
 LSTATUS DisplayLinkList(IN pNODE pHead)
 {
     pNODE pt = pHead ->pNext ;
-    printf("The List Id Name :\n");
-    printf("-- %s --\n",pHead->IdName);
+//    printf("The List Id Name :\n");
+    printf("-------- %s -------\n",pHead->IdName);
     while(pt != NULL)
     {
-            printf("-- %s --\n",pt->IdName);
+            printf(" |-- %s --\n",pt->IdName);
             if(strcmp(pt->IdName,"cosim") == 0)        
-                        printf("Info: Test = 0x%x\n",((COSIM_INSTANCE *)pt->Instance)->Test);
+                        printf("     |--Info: Test = 0x%x\n",((COSIM_INSTANCE *)pt->Instance)->Test);
             pt = pt ->pNext;
     }
     return SUCCESS;

@@ -18,7 +18,7 @@ typedef struct _NODE{
         struct _NODE *pPre;
         struct _NODE *pNext;
         void         *Instance;
-        UINT8        *IdName;
+        INT8        *IdName;
 }NODE,*pNODE;
 
 pNODE CreatLinkList(void);
