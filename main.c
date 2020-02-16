@@ -36,16 +36,15 @@ void main()
      DisplayLinkList(Listhead);
 
      DelNodeLinkList(Listhead,0);
-         DisplayLinkList(Listhead); 
-     DelNodeLinkList(Listhead,0);
-     DisplayLinkList(Listhead);
+     DisplayLinkList(Listhead); 
      FreeMemory(&Listhead);
 
-/*
+
     char *Test1 = (char *)MemoryPoolInstance.MemAlloc(&MemoryPoolInstance,100);
-    memcpy(Test1,"您好12312321312",sizeof("您好12312321312"));
+    memcpy(Test1,"12312321312",sizeof("12312321312"));
+    printf("!!! %s\n",Test1);
     memset(Test1,0,sizeof(Test1));
-*/
+
 
 
 }
