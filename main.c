@@ -17,7 +17,6 @@ void main()
     MemoryPoolInstance.Init(&MemoryPoolInstance);
 
 
-
     /* example
     cosimintance.Test = 0x22;
     printf("addr = 0x%x \n",(UINT32 *)(container_of(&cosimintance.Test,COSIM_INSTANCE,Test)));

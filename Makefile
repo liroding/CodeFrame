@@ -62,6 +62,7 @@ clean:
 	rm $(OBJS_DIR)/*.o
 	$(RM) $(BIN_DIR)/*
 
+	$(RM) myapp
 ck:
 	export
 	echo ${wildcard *.c test/*.c}
