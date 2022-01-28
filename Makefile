@@ -1,12 +1,12 @@
 CC = gcc
 CFLAG = -Wall
-TARGET =main
+TARGET = main
 
-OUTFILE=debug
+OUTFILE = debug
 
-OUTBIN=bin
+OUTBIN = bin
 
-OBJFILE=obj
+OBJFILE = obj
 
 ifneq ($(OUTFILE), $(wildcard $(OUTFILE)))
 $(shell mkdir -p $(OUTFILE) $(OUTFILE)/$(OUTBIN) $(OUTFILE)/$(OBJFILE))
@@ -25,6 +25,7 @@ SUBDIRS=$(shell ls -l | grep ^d | awk '{if($$9 != "debug") print $$9}')
 
 SUBDIRS:=$(patsubst includes,,$(SUBDIRS))
 
+
 ROOT_DIR=$(shell pwd)
 
 BIN = myapp
@@ -33,14 +34,16 @@ OBJS_DIR = debug/obj
 
 BIN_DIR = debug/bin
 
-CUR_SOURCE = ${wildcard *.c}
+#CUR_SOURCE = ${wildcard *.c SUBDIRS/*.c}
+CUR_SOURCE =${wildcard *.c  $(foreach dir,$(SUBDIRS),$(dir)/*c)}
 
 CUR_OBJS = ${patsubst %.c,%.o,$(CUR_SOURCE)}
 
-INCLUDE_PATH := $(ROOT_DIR)/includes/
+
 
 #get all include path
-CFLAGS  += $(foreach dir, $(INCLUDE_PATH), -I$(dir))
+CFLAGS  += $(foreach dir, $(SUBDIRS), -I$(ROOT_DIR)/$(dir))
+CFLAGS  += -I$(ROOT_DIR)/includes
 
 export CC BIN OBJS_DIR BIN_DIR ROOT_DIR CFLAGS
 
@@ -59,8 +62,10 @@ clean:
 	rm $(OBJS_DIR)/*.o
 	$(RM) $(BIN_DIR)/*
 
-hello:
-	echo $(SUBDIRS) $(ROOT_DIR) $(CUR_SOURCE) $(CUR_OBJS) $(CFLAGS)
+ck:
+	export
+	echo ${wildcard *.c test/*.c}
+	@echo "SUBDIRS="$(SUBDIRS) "| ROOT_DIR=" $(ROOT_DIR)" | CUR_SOURCE=" $(CUR_SOURCE) " | CUR_OBJS= " $(CUR_OBJS) "| CFLAGS= " $(CFLAGS)
 cp:
 	echo $(ROOT_DIR)
 	cp $(ROOT_DIR)/$(BIN_DIR)/myapp ./
